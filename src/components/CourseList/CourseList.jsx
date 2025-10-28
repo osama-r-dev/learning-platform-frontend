@@ -21,7 +21,7 @@ function CourseList() {
           <div className="course_container">
             <Link key={course.id} to={`/home/courses/${course.id}`}>
               {/* TODO remove this and make an API request for an actual course img */}
-              <img src="https://placehold.co/300" alt="dummy-course-pciture" />
+              <img src="https://placehold.co/400" alt="dummy-course-pciture" />
               <h2>{course.title}</h2>
             </Link>
           </div>

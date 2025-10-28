@@ -9,11 +9,16 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.8rem;
   max-width: 1200px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .course_container {
   background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.4rem;
 }
 
 .container {
