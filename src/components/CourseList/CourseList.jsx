@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router";
 import React, { useEffect, useState } from "react";
+import "../../css-styling/course-list.css";
 function CourseList() {
   const [courses, setCourses] = useState([]);
 
@@ -14,15 +15,16 @@ function CourseList() {
     getCoursesList();
   }, []);
   return (
-    <div>
+    <div className="courses_dashboard">
       {courses.map((course) => {
         return (
-          <>
-            <div>
-              <Link key={course.id} to={`/home/courses/${course.id}`}></Link>
+          <div className="course_container">
+            <Link key={course.id} to={`/home/courses/${course.id}`}>
+              {/* TODO remove this and make an API request for an actual course img */}
+              <img src="https://placehold.co/300" alt="dummy-course-pciture" />
               <h2>{course.title}</h2>
-            </div>
-          </>
+            </Link>
+          </div>
         );
       })}
     </div>

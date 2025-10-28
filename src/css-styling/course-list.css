@@ -1,0 +1,21 @@
+* {
+  padding: 0 0;
+  margin: 0 0;
+  box-sizing: border-box;
+}
+
+.courses_dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.8rem;
+  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.course_container {
+  background-color: aquamarine;
+}
+
+.container {
+  margin: 0 auto;
+}
