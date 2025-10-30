@@ -6,9 +6,10 @@ function NavBar() {
     <div className="nav-container">
       <nav>
         <Link to={"/home"}>Home</Link>
+        <Link to={"/home"}>Find my path</Link>
+        <Link to={"/home"}>league board</Link>
       </nav>
     </div>
   );
 }
-
 export default NavBar;

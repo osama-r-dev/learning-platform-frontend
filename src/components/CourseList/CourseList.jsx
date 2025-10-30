@@ -6,7 +6,7 @@ function CourseList() {
   const [courses, setCourses] = useState([]);
 
   async function getCoursesList() {
-    const response = await axios.get("http://127.0.0.1:8000/api/courses/");
+    const response = await axios.get("http://127.0.0.1:8000/api/allcourses/");
     console.log(response.data);
     setCourses(response.data);
   }
