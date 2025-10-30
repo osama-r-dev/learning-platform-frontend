@@ -7,6 +7,7 @@ import CourseCard from "./components/CourseCard/CourseCard";
 import NavBar from "./components/NavBar/NavBar";
 import CourseForm from "./components/CourseForm/CourseForm";
 import SignupPage from "./components/SignupPage/SignupPage";
+import Login from "./components/Login/Login";
 function App() {
   return (
     // <div className="app_container">
@@ -14,9 +15,10 @@ function App() {
       <NavBar></NavBar>
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
-        <Route path="/home/courses/:courseId" element={<CourseCard />}></Route>
-        <Route path="/home/courses/:courseId" element={<CourseCard />}></Route>
+        {/* <Route path="/home/courses/:courseId" element={<CourseCard />}></Route>
+        <Route path="/home/courses/:courseId" element={<CourseCard />}></Route> */}
         <Route path="/signup" element={<SignupPage />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </Router>
     // </div>
