@@ -3,3 +3,8 @@
   background-color: cadetblue;
   border: 0, 2rem solid black;
 }
+
+a {
+  align-self: center;
+  justify-self: center;
+}

@@ -19,6 +19,7 @@ function CourseCard() {
   return (
     <div className="course_card">
       {/* TODO remove this and make an API request for an actual video img */}
+
       <img src="https://placehold.co/400" alt="dummy-video-pciture" />
       <h2>{course.title}</h2>
       <p>{course.description}</p>
