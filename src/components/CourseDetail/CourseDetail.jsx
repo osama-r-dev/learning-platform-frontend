@@ -1,9 +1,10 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import axios from "axios";
-import "../../css-styling/course-card.css";
-function CourseCard() {
+import "../../css-styling/CourseDetail.css";
+function CourseDetail() {
   const [loading, setLoading] = useState(true);
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
@@ -23,8 +24,8 @@ function CourseCard() {
   useEffect(() => {
     getCourseDetails();
   }, []);
-  console.log(course);
   if (loading) return <p>Loading course details...</p>;
+  console.log(course.course_img);
   return (
     <div className="course_card">
       {/* TODO remove this and make an API request for an actual video img */}
@@ -35,9 +36,9 @@ function CourseCard() {
       <p>{course.skills}</p>
       <p> {course.date_created}</p>
       <p> {course.date_created}</p>
-      <p>by {course?.employee?.name || "loading..."}</p>
+
+      <Link to={"#"}>by {course?.employee?.name || "loading..."}</Link>
     </div>
   );
 }
-
-export default CourseCard;
+export default CourseDetail;

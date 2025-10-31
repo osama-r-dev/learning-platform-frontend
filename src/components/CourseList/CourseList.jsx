@@ -22,10 +22,7 @@ function CourseList() {
             <Link key={course.id} to={`/home/courses/${course.id}`}>
               {/* TODO remove this and make an API request for an actual course img */}
               <div>
-                <img
-                  src="https://placehold.co/400"
-                  alt="dummy-course-pciture"
-                />
+                <img src={"http://127.0.0.1:8000".concat(course.course_img)} />
                 <h2>{course.title}</h2>
               </div>
             </Link>
@@ -35,5 +32,4 @@ function CourseList() {
     </div>
   );
 }
-
 export default CourseList;
