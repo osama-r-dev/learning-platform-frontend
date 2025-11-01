@@ -9,6 +9,7 @@ function EmployeeProfile() {
     department: "",
     bio: "",
     skills: "",
+    avatar: null,
   });
   const [error, setError] = useState(null);
   const [responseState, setResponseState] = useState("");
@@ -37,7 +38,6 @@ function EmployeeProfile() {
       } else setError(error.response?.data || { message: error.message });
     }
   }
-
   useEffect(() => {
     getProfile();
   }, []);
@@ -94,6 +94,14 @@ function EmployeeProfile() {
         type="text"
         name="skills"
         value={info.skills}
+        onChange={handleChange}
+      ></input>
+      <label htmlFor="avatar">Skills</label>
+      <input
+        id="avatar"
+        type="text"
+        name="avatar"
+        value={info.avatar}
         onChange={handleChange}
       ></input>
       <Link to={"/home/myprofile/mycourses"}>My courses</Link>

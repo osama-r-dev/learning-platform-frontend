@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import axios from "axios";
 import "../../css-styling/CourseDetail.css";
+import VideoList from "../VideoList/VideoList";
 function CourseDetail({ myCoursesMode }) {
   const [loading, setLoading] = useState(true);
   const { courseId } = useParams();
@@ -35,10 +36,11 @@ function CourseDetail({ myCoursesMode }) {
       <p>{course.description}</p>
       <p>{course.skills}</p>
       <p> {course.date_created}</p>
-      <p> {course.date_created}</p>
-
+      <p>Content</p>
       <Link to={"#"}>by {course?.employee?.name || "loading..."}</Link>
-      {myCoursesMode && <button>Edit this course</button>}
+      <VideoList courseId={courseId} flag={true}>
+        {" "}
+      </VideoList>
     </div>
   );
 }
