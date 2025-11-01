@@ -8,6 +8,7 @@ function NavBar() {
         <Link to={"/home/myprofile"}>profile</Link>
         <Link to={"/home/myprofile"}>Home</Link>
         <Link to={"/home"}>league board</Link>
+        <Link to={"/home/courses"}>courses</Link>
       </nav>
     </div>
   );

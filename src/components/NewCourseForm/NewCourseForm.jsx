@@ -1,34 +1,32 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import axios from "axios";
-import { Link, useNavigate } from "react-router";
-function EmployeeProfile() {
-  const navigate = useNavigate();
+import { useNavigate } from "react-router";
+function NewCourseForm() {
   const [info, setInfo] = useState({
-    name: "",
-    department: "",
-    bio: "",
+    course_img: null,
+    title: "",
+    description: "",
     skills: "",
   });
+  const { courseId } = useParams();
   const [error, setError] = useState(null);
   const [responseState, setResponseState] = useState("");
-
   function handleChange(event) {
     setInfo({ ...info, [event.target.name]: event.target.value });
   }
-
-  async function getProfile() {
+  async function getCourseForm() {
+    if (!courseId) return;
     try {
       const accessToken = localStorage.getItem("accessToken");
-      const response = await axios.get("http://127.0.0.1:8000/api/myprofile/", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      setInfo({
-        name: response.data.employee.name,
-        department: response.data.employee.department,
-        bio: response.data.bio,
-        skills: response.data.skills,
-      });
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/courses/${courseId}`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
+      setInfo(response.data);
       console.log(response.data);
     } catch (error) {
       if (error.response?.status === 401) {
@@ -37,55 +35,62 @@ function EmployeeProfile() {
       } else setError(error.response?.data || { message: error.message });
     }
   }
-
   useEffect(() => {
-    getProfile();
+    getCourseForm();
   }, []);
-
   async function handleForm(event) {
     event.preventDefault();
-
+    const accessToken = localStorage.getItem("accessToken");
     setError(null);
     setResponseState("");
     try {
-      const accessToken = localStorage.getItem("accessToken");
-      const response = await axios.put(
-        "http://127.0.0.1:8000/api/myprofile/",
-        info,
-        {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }
-      );
-      setResponseState("Profile updated successfully!");
+      let response;
+      if (courseId) {
+        response = await axios.put(
+          `http://127.0.0.1:8000/api/courses/${courseId}/`,
+          info,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        );
+        setResponseState("Course updated successfully!");
+      } else {
+        response = await axios.post(
+          `http://127.0.0.1:8000/api/courses/`,
+          info,
+          {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          }
+        );
+        setResponseState("Course created successfully!");
+        navigate("/home/myprofile/mycourses");
+      }
     } catch (error) {
       setError(error.response?.data || { message: error.message });
-      console.log(error || error);
     }
   }
   return (
     <form onSubmit={handleForm}>
-      <label htmlFor="name">Name </label>
+      <label htmlFor="course_img">img of the course</label>
       <input
-        id="name"
+        id="course_img"
         type="text"
-        name="name"
-        value={info.name}
+        name="course_img"
+        value={info.course_img}
         onChange={handleChange}
       ></input>
-      <label htmlFor="department"> Department</label>
+      <label htmlFor="Title"> Title</label>
       <input
-        id="department"
+        id="title"
         type="text"
-        name="department"
-        value={info.department}
+        name="title"
+        value={info.title}
         onChange={handleChange}
       ></input>
-      <label htmlFor="email">Bio</label>
+      <label htmlFor="Description">Description</label>
       <input
-        id="bio"
+        id="description"
         type="text"
-        name="bio"
-        value={info.bio}
+        name="description"
+        value={info.description}
         onChange={handleChange}
       ></input>
       <label htmlFor="skills">Skills</label>
@@ -96,16 +101,15 @@ function EmployeeProfile() {
         value={info.skills}
         onChange={handleChange}
       ></input>
-      <Link to={"/home/myprofile/mycourses"}>My courses</Link>
-      <button type="submit">Submit</button>
       {error && (
         <p style={{ color: "red" }}>
           {error.message || error.error || String(error)}
         </p>
       )}
       {responseState && <p style={{ color: "green" }}>{responseState}</p>}
+
+      <button type="submit">Submit</button>
     </form>
   );
 }
-
-export default EmployeeProfile;
+export default NewCourseForm;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import axios from "axios";
 import "../../css-styling/CourseDetail.css";
-function CourseDetail() {
+function CourseDetail({ myCoursesMode }) {
   const [loading, setLoading] = useState(true);
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
@@ -38,6 +38,7 @@ function CourseDetail() {
       <p> {course.date_created}</p>
 
       <Link to={"#"}>by {course?.employee?.name || "loading..."}</Link>
+      {myCoursesMode && <button>Edit this course</button>}
     </div>
   );
 }
