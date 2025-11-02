@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-function VideoList({ courseId, falg }) {
+import { Link, useParams } from "react-router";
+function VideoList({ falg }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { courseId } = useParams();
 
   async function getVideos() {
     try {
@@ -19,7 +20,6 @@ function VideoList({ courseId, falg }) {
       setLoading(false);
     }
   }
-
   useEffect(() => {
     getVideos();
   }, []);
@@ -32,17 +32,19 @@ function VideoList({ courseId, falg }) {
         <p>No vidoes</p>
       ) : (
         videos.map((video) => (
-          <div key={video.id} className="video-elem">
+          <Link
+            key={video.id}
+            to={`/courses/${courseId}/videos/${video.id}`}
+            className="video-link"
+          >
             <h4>{video.title}</h4>
-            <video width="400" controls>
+            <video width="200" controls>
               <source
                 src={`http://127.0.0.1:8000${video.video}`}
                 type="video/mp4"
               />
             </video>
-            <p>{video.description}</p>
-            {falg && <button>Edit or Delete</button>}
-          </div>
+          </Link>
         ))
       )}
     </div>
