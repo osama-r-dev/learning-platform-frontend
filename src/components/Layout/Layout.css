@@ -1,0 +1,75 @@
+body {
+  background-color: #fdfffc;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #fdfffc;
+}
+
+.layout-title {
+  color: #23ce6b;
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.layout-title:hover {
+  transform: scale(1.05);
+  color: #1eae5a;
+}
+/* This code does that cool actoin   */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fdfffc;
+}
+
+.layout-nav {
+  display: flex;
+  align-items: space-between;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+}
+
+.layout-link {
+  text-decoration: none;
+  color: #23ce6b;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.layout-link:hover {
+  color: #1eae5a;
+}
+
+.layout-title {
+  color: #23ce6b;
+  font-size: 4rem;
+  font-weight: 700;
+}

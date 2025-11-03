@@ -29,7 +29,7 @@ function CourseList({ myCoursesMode }) {
               key={course.id}
               to={
                 myCoursesMode
-                  ? `/home/myprofile/mycourses/${course.id}/videos`
+                  ? `/home/myprofile/mycourses/${course.id}`
                   : `/home/courses/${course.id}`
               }
             >

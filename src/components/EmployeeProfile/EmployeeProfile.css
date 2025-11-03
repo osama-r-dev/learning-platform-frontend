@@ -1,0 +1,73 @@
+.profile-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fb;
+  position: relative;
+}
+
+.drawer-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: #23ce6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 2000;
+  font-size: 1.2rem;
+}
+
+.profile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  padding: 1.5rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.profile-drawer.closed {
+  transform: translateX(-100%);
+}
+
+.profile-drawer.open {
+  transform: translateX(0);
+}
+
+.profile-content {
+  flex-grow: 1;
+  margin-left: 300px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.profile-drawer.closed ~ .profile-content {
+  margin-left: 0;
+}
+
+.profile-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}

@@ -12,6 +12,7 @@ import EmployeeProfile from "./components/EmployeeProfile/EmployeeProfile";
 import CourseList from "./components/CourseList/CourseList";
 import VideoList from "./components/VideoList/VideoList";
 import VideoDetails from "./components/VideoDetails/VideoDetails";
+import Layout from "./components/Layout/Layout";
 function App() {
   return (
     // <div className="app_container">
@@ -35,13 +36,18 @@ function App() {
           element={<VideoDetails myCoursesMode={true} />}
         />
         <Route
-          path="home/myprofile/mycourses/:courseId/videos"
-          element={<VideoList flag={true} />}
+          path="home/myprofile/mycourses/:courseId"
+          element={<CourseDetail myCoursesMode={true} />}
         />
         <Route
           path="home/myprofile/mycourses/new"
           element={<NewCourseForm myCoursesMode={true} />}
         />
+        <Route
+          path="home/myprofile/mycourses/:courseId/edit"
+          element={<NewCourseForm myCoursesMode={true} />}
+        />
+        <Route path="/layout" element={<Layout Layout={true} />} />
       </Routes>
     </Router>
     // </div>

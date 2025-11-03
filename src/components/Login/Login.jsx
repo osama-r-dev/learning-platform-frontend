@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import "./Login.css";
 function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -34,27 +35,38 @@ function Login() {
     setInfo({ ...info, [event.target.name]: event.target.value });
   }
   return (
-    <form onSubmit={handleForm}>
-      <label htmlFor="usename">Username </label>
-      <input
-        id="username"
-        type="text"
-        name="username"
-        value={info.username}
-        onChange={handleChange}
-      ></input>
-      <label htmlFor="password"> Password</label>
-      <input
-        id="password"
-        type="password"
-        name="password"
-        value={info.password}
-        onChange={handleChange}
-      ></input>
-      <button type="submit">Submit</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {responseState && <p style={{ color: "green" }}>{responseState}</p>}
-    </form>
+    <div class="login-container">
+      <form className="login-form" onSubmit={handleForm}>
+        <label className="login-label" htmlFor="usename">
+          Username{" "}
+        </label>
+        <input
+          className="login-input"
+          id="username"
+          type="text"
+          name="username"
+          value={info.username}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="password" className="login-label">
+          {" "}
+          Password
+        </label>
+        <input
+          className="login-input"
+          id="password"
+          type="password"
+          name="password"
+          value={info.password}
+          onChange={handleChange}
+        ></input>
+        <button className="login-submit-button" type="submit">
+          Submit
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {responseState && <p style={{ color: "green" }}>{responseState}</p>}
+      </form>
+    </div>
   );
 }
 export default Login;

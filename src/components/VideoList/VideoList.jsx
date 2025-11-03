@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router";
-function VideoList({ falg }) {
+import { useParams } from "react-router";
+import VideoDetails from "../VideoDetails/VideoDetails";
+
+function VideoList({ flag }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedVideoId, setSelectedVideoId] = useState(null);
   const { courseId } = useParams();
 
   async function getVideos() {
@@ -11,7 +14,9 @@ function VideoList({ falg }) {
       const token = localStorage.getItem("accessToken");
       const response = await axios.get(
         `http://127.0.0.1:8000/api/courses/${courseId}/myvideos/`,
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
       setVideos(response.data);
     } catch (error) {
@@ -20,33 +25,32 @@ function VideoList({ falg }) {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     getVideos();
   }, []);
 
-  if (loading === true) return <p>videos loading</p>;
+  if (loading) return <p>Videos loading...</p>;
+  if (videos.length === 0) return <p>No videos found.</p>;
+
+  if (selectedVideoId) {
+    return (
+      <VideoDetails courseId={courseId} videoId={selectedVideoId} flag={flag} />
+    );
+  }
 
   return (
     <div className="video-list">
-      {videos.length === 0 ? (
-        <p>No vidoes</p>
-      ) : (
-        videos.map((video) => (
-          <Link
-            key={video.id}
-            to={`/courses/${courseId}/videos/${video.id}`}
-            className="video-link"
-          >
-            <h4>{video.title}</h4>
-            <video width="200" controls>
-              <source
-                src={`http://127.0.0.1:8000${video.video}`}
-                type="video/mp4"
-              />
-            </video>
-          </Link>
-        ))
-      )}
+      {videos.map((video) => (
+        <div
+          key={video.id}
+          className="video-link"
+          style={{ cursor: "pointer", marginBottom: "1rem" }}
+          onClick={() => setSelectedVideoId(video.id)}
+        >
+          <h4>{video.title}</h4>
+        </div>
+      ))}
     </div>
   );
 }
