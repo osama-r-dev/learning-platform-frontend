@@ -68,7 +68,7 @@ function EmployeeProfile() {
       <aside className={`profile-drawer ${isOpen ? "open" : "closed"}`}>
         <h2>My Profile</h2>
         <div className="profile-avatar">
-          <img src={info.avatar || "./fakeavatar.jpg"} alt="Profile avatar" />
+          <img src={"./fakeavatar.jpg"} alt="Profile avatar" />
         </div>
 
         <div className="employee-profile-form">
@@ -118,7 +118,7 @@ function EmployeeProfile() {
             />
 
             <button type="submit">Update</button>
-            <Link to="/home/myprofile/mycourses" className="profile-link">
+            <Link to="/home/myprofile/mycourses" className="my-courses">
               My Courses
             </Link>
 
@@ -129,8 +129,10 @@ function EmployeeProfile() {
             )}
             {responseState && <p className="success">{responseState}</p>}
           </form>
+          <Link className="log-out" to={"/"}>
+            Log out{" "}
+          </Link>
         </div>
-        <Link to={"/layout"}>Log out </Link>
       </aside>
     </div>
   );

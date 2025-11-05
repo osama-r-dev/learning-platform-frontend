@@ -1,0 +1,71 @@
+.video-elem {
+  background-color: #f0f4f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.video-elem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.video-elem h4 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+.video-elem video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  background-color: #000;
+  outline: none;
+}
+
+.video-elem p {
+  font-size: 1rem;
+  color: #4b5563;
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  max-width: 700px;
+}
+
+.video-elem button {
+  background-color: #ee2e31;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.video-elem button:hover {
+  background-color: #c32628;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-elem {
+  animation: fadeInUp 0.3s ease;
+}

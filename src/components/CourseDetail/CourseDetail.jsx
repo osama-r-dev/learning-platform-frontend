@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import axios from "axios";
 import VideoList from "../VideoList/VideoList";
-import "../../css-styling/CourseDetail.css";
-import { Link } from "react-router";
+import NewCourseForm from "../NewCourseForm/NewCourseForm";
+import "./CourseDetail.css";
 
 function CourseDetail({ myCoursesMode }) {
   const [loading, setLoading] = useState(true);
   const [showVideos, setShowVideos] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
   const navigate = useNavigate();
@@ -52,27 +53,46 @@ function CourseDetail({ myCoursesMode }) {
 
   return (
     <div className="course_card">
-      <img src={"http://127.0.0.1:8000".concat(course.course_img)} />
+      <img
+        src={"http://127.0.0.1:8000".concat(course.course_img)}
+        alt="Course"
+      />
       <h2>{course.title}</h2>
       <p>{course.description}</p>
       <p>{course.skills}</p>
       <p>{course.date_created}</p>
 
-      <p onClick={() => setShowVideos(!showVideos)}>Content</p>
+      <p onClick={() => setShowVideos(!showVideos)} className="content-toggle">
+        {showVideos ? "Hide Content" : "Show Content"}
+      </p>
 
-      {showVideos && <VideoList courseId={courseId} falg={false} />}
+      {showVideos && <VideoList courseId={courseId} flag={false} />}
 
       <p>by {course?.employee?.name || "loading..."}</p>
 
       {myCoursesMode && (
-        <div>
-          <Link
-            key={course.id}
-            to={`/home/myprofile/mycourses/${courseId}/edit`}
-          >
+        <div className="course-actions">
+          <button className="edit-btn" onClick={() => setShowEditForm(true)}>
             Edit
-          </Link>
-          <button onClick={handleDeleteCourse}>Delete Course</button>
+          </button>
+          <button className="delete-btn" onClick={handleDeleteCourse}>
+            Delete Course
+          </button>
+        </div>
+      )}
+
+      {/* ✅ Modal Popup */}
+      {showEditForm && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button
+              className="close-modal"
+              onClick={() => setShowEditForm(false)}
+            >
+              ✖
+            </button>
+            <NewCourseForm courseId={courseId} />
+          </div>
         </div>
       )}
     </div>

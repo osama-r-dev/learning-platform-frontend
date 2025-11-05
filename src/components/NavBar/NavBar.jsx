@@ -6,10 +6,10 @@ function NavBar() {
     <div className="navbar-container">
       <nav>
         <Link className="leagueboard" to={"/home"}>
-          Home
+          Learning
         </Link>
-        <Link to={"/home/myprofile"}>Home</Link>
         <Link to={"/home/courses"}>Find my path</Link>
+        <Link to={"/home/myprofile"}>leagueboard</Link>
       </nav>
     </div>
   );

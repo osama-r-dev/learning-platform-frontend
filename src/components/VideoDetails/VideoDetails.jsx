@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import "./VideoDetails.css";
 function VideoDetails({ courseId, videoId, flag }) {
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -38,7 +38,6 @@ function VideoDetails({ courseId, videoId, flag }) {
         }
       );
       alert("Video deleted successfully!");
-      // navigate("/home/myprofile/mycourses");
     } catch (error) {
       console.error("Failed to delete video:", error);
       alert("Failed to delete video");

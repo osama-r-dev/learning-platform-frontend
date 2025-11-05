@@ -5,12 +5,13 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f8f9fb;
+  background-color: #51e18d;
+  border-radius: 0.8rem;
   box-sizing: border-box;
 }
 
 .course_container {
-  background-color: #fff;
+  background-color: #f0f4f9;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
