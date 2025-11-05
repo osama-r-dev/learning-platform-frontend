@@ -50,7 +50,7 @@ function AppContent() {
         />
         <Route
           path="/home/myprofile/mycourses/new"
-          element={<NewCourseForm myCoursesMode={true} />}
+          element={<NewCourseForm myCoursesMode={true} flag={false} />}
         />
         <Route
           path="/home/myprofile/mycourses/:courseId/edit"

@@ -1,0 +1,119 @@
+form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+form label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+form input[type="text"],
+form input[type="file"] {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #23ce6b;
+  box-shadow: 0 0 0 2px rgba(35, 206, 107, 0.2);
+}
+
+button {
+  background-color: #23ce6b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+button:hover {
+  background-color: #1fb85f;
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+p[style*="color: red"] {
+  background-color: rgba(255, 0, 0, 0.05);
+  border-left: 3px solid red;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+}
+
+p[style*="color: green"] {
+  background-color: rgba(35, 206, 107, 0.1);
+  border-left: 3px solid #23ce6b;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.skill-tag {
+  background-color: #23ce6b;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background-color: #1bb35d;
+  transform: scale(1.05);
+}
+.close-modal {
+  padding: 2rem 2rem !important;
+  position: absolute;
+  width: 6rem;
+  height: 1.8rem;
+  top: -0.32rem !important;
+
+  left: 511.48px;
+  border-radius: 0 !important;
+}
+
+.modal-content {
+  position: relative;
+}
+.show-hide-form-button-arrows {
+  left: 941px;
+  top: 508px;
+  position: absolute;
+}
+
+.course-form-container {
+  position: relative;
+}

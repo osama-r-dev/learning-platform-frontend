@@ -48,7 +48,11 @@ function CourseDetail({ myCoursesMode }) {
       alert("Failed to delete course");
     }
   }
+  const colors = ["#FF006E"];
 
+  function getRandomCloror() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
   if (loading) return <p>Loading course details...</p>;
 
   return (
@@ -57,19 +61,35 @@ function CourseDetail({ myCoursesMode }) {
         src={"http://127.0.0.1:8000".concat(course.course_img)}
         alt="Course"
       />
-      <h2>{course.title}</h2>
+      <div className="title-container">
+        <h2 className="course-title">{course.title}</h2>
+      </div>
+      <p className="course-description">Description</p>
       <p>{course.description}</p>
-      <p>{course.skills}</p>
-      <p>{course.date_created}</p>
+      <p className="Skills">Skills</p>
+      <span className="skills-container">
+        {(Array.isArray(course.skills)
+          ? course.skills
+          : course.skills?.split(",")
+        )?.map((skill, index) => (
+          <span
+            key={index}
+            className="skill-tag"
+            style={{ backgroundColor: getRandomCloror() }}
+          >
+            {skill.trim()}
+          </span>
+        ))}
+      </span>
 
       <p onClick={() => setShowVideos(!showVideos)} className="content-toggle">
         {showVideos ? "Hide Content" : "Show Content"}
       </p>
-
       {showVideos && <VideoList courseId={courseId} flag={false} />}
 
       <p>by {course?.employee?.name || "loading..."}</p>
 
+      <p className="date-created">{course.date_created}</p>
       {myCoursesMode && (
         <div className="course-actions">
           <button className="edit-btn" onClick={() => setShowEditForm(true)}>
@@ -81,7 +101,6 @@ function CourseDetail({ myCoursesMode }) {
         </div>
       )}
 
-      {/* ✅ Modal Popup */}
       {showEditForm && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -91,7 +110,7 @@ function CourseDetail({ myCoursesMode }) {
             >
               ✖
             </button>
-            <NewCourseForm courseId={courseId} />
+            <NewCourseForm flag={true} courseId={courseId} />
           </div>
         </div>
       )}

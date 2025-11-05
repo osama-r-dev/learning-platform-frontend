@@ -5,7 +5,7 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #51e18d;
+  background-color: #51e18d !important;
   border-radius: 0.8rem;
   box-sizing: border-box;
 }
@@ -65,16 +65,21 @@
 }
 
 .add-course-link {
-  background-color: #2563eb;
+  background-color: #ee2e31;
   color: white;
   font-weight: 600;
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.2rem !important;
   border-radius: 6px;
   text-decoration: none;
   transition: background-color 0.25s ease, transform 0.2s ease;
+  align-self: center;
+  justify-content: center;
 }
 
 .add-course-link:hover {
   background-color: #1e40af;
   transform: translateY(-2px);
+}
+
+.add-course-link {
 }

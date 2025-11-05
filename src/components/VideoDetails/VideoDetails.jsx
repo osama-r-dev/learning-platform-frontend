@@ -53,7 +53,7 @@ function VideoDetails({ courseId, videoId, flag }) {
         <source src={`http://127.0.0.1:8000${video.video}`} type="video/mp4" />
       </video>
       <button onClick={handleDeleteCourse}>Delete Video</button>
-      <p>{video.description}</p>
+      <p className="video-descrip">{video.description}</p>
     </div>
   );
 }

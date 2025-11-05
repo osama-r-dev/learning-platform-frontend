@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import VideoForm from "../VideoForm/VideoForm";
-
-function NewCourseForm() {
+import "./NewCourseForm.css";
+function NewCourseForm({ flag }) {
   const [info, setInfo] = useState({
     course_img: null,
     title: "",
@@ -98,7 +98,7 @@ function NewCourseForm() {
   }
 
   return (
-    <div>
+    <div className="course-form-container">
       <form onSubmit={handleForm}>
         <label htmlFor="course_img">img of the course</label>
         <input
@@ -147,10 +147,21 @@ function NewCourseForm() {
       </form>
 
       {videoForm === true ? <VideoForm courseId={courseId}></VideoForm> : null}
-
-      <button onClick={() => setVideoForm(!videoForm)}>
-        {videoForm === true ? "Hide form" : "Show form"}
-      </button>
+      {flag ? (
+        <button
+          className="show-hide-form-button"
+          onClick={() => setVideoForm(!videoForm)}
+        >
+          {videoForm ? "Hide form" : "Show form"}
+        </button>
+      ) : (
+        <button
+          className="show-hide-form-button-arrows"
+          onClick={() => setVideoForm(!videoForm)}
+        >
+          {videoForm ? "▲" : "▼"}
+        </button>
+      )}
     </div>
   );
 }
