@@ -1,0 +1,24 @@
+.navbar-container {
+  margin-bottom: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+}
+.navbar-container nav {
+  gap: 6rem;
+  display: flex;
+}
+
+.leagueboard {
+  display: inline;
+}
+
+.navbar-container a {
+  letter-spacing: 0.1rem;
+  white-space: nowrap;
+  color: #23ce6b;
+  font-weight: 600;
+  font-size: 1.4rem;
+}

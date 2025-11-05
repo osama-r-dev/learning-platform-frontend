@@ -1,7 +1,11 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router";
 import Homepage from "./components/Home/Homepage";
 import CourseDetail from "./components/CourseDetail/CourseDetail";
 import NavBar from "./components/NavBar/NavBar";
@@ -10,25 +14,30 @@ import SignupPage from "./components/SignupPage/SignupPage";
 import Login from "./components/Login/Login";
 import EmployeeProfile from "./components/EmployeeProfile/EmployeeProfile";
 import CourseList from "./components/CourseList/CourseList";
-import VideoList from "./components/VideoList/VideoList";
 import VideoDetails from "./components/VideoDetails/VideoDetails";
 import Layout from "./components/Layout/Layout";
-function App() {
+
+function AppContent() {
+  const location = useLocation();
+
+  const hiddenPaths = ["/login", "/signup", "/"];
+
+  const hideNav = hiddenPaths.includes(location.pathname);
+
   return (
-    // <div className="app_container">
-    <Router>
-      <NavBar></NavBar>
+    <>
+      {!hideNav && <NavBar />}
+
       <Routes>
-        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/" element={<Layout />} />
+
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/home/courses/:courseId" element={<CourseDetail />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home/myprofile" element={<EmployeeProfile />} />
         <Route
-          path="/home/courses/:courseId"
-          element={<CourseDetail />}
-        ></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="home/myprofile" element={<EmployeeProfile />}></Route>
-        <Route
-          path="home/myprofile/mycourses"
+          path="/home/myprofile/mycourses"
           element={<CourseList myCoursesMode={true} />}
         />
         <Route
@@ -36,21 +45,28 @@ function App() {
           element={<VideoDetails myCoursesMode={true} />}
         />
         <Route
-          path="home/myprofile/mycourses/:courseId"
+          path="/home/myprofile/mycourses/:courseId"
           element={<CourseDetail myCoursesMode={true} />}
         />
         <Route
-          path="home/myprofile/mycourses/new"
+          path="/home/myprofile/mycourses/new"
           element={<NewCourseForm myCoursesMode={true} />}
         />
         <Route
-          path="home/myprofile/mycourses/:courseId/edit"
+          path="/home/myprofile/mycourses/:courseId/edit"
           element={<NewCourseForm myCoursesMode={true} />}
         />
-        <Route path="/layout" element={<Layout Layout={true} />} />
       </Routes>
-    </Router>
-    // </div>
+    </>
   );
 }
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+
 export default App;

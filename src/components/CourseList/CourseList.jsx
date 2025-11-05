@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router";
 import React, { useEffect, useState } from "react";
-import "../../css-styling/course-list.css";
+import "./CourseList.css";
 function CourseList({ myCoursesMode }) {
   const [courses, setCourses] = useState([]);
 
@@ -24,22 +24,22 @@ function CourseList({ myCoursesMode }) {
     <div className="courses_dashboard">
       {courses.map((course) => {
         return (
-          <div className="course_container">
-            <Link
-              key={course.id}
-              to={
-                myCoursesMode
-                  ? `/home/myprofile/mycourses/${course.id}`
-                  : `/home/courses/${course.id}`
-              }
-            >
+          <Link
+            key={course.id}
+            to={
+              myCoursesMode
+                ? `/home/myprofile/mycourses/${course.id}`
+                : `/home/courses/${course.id}`
+            }
+          >
+            <div className="course_container">
               {/* TODO remove this and make an API request for an actual course img */}
+              <img src={"http://127.0.0.1:8000".concat(course.course_img)} />
               <div>
-                <img src={"http://127.0.0.1:8000".concat(course.course_img)} />
                 <h2>{course.title}</h2>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
       {/* // this is a condition in the case of adding a course meaning if it contains the 'myprofile inside the path' */}

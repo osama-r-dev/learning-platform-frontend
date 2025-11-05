@@ -3,11 +3,13 @@ import { Link } from "react-router";
 import "./NavBar.css";
 function NavBar() {
   return (
-    <div className="nav-container">
+    <div className="navbar-container">
       <nav>
+        <Link className="leagueboard" to={"/home"}>
+          Home
+        </Link>
         <Link to={"/home/myprofile"}>Home</Link>
-        <Link to={"/home"}>league board</Link>
-        <Link to={"/home/courses"}>courses</Link>
+        <Link to={"/home/courses"}>Find my path</Link>
       </nav>
     </div>
   );

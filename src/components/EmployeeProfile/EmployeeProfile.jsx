@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import "./EmployeeProfile.css";
+
 function EmployeeProfile() {
   const navigate = useNavigate();
   const [info, setInfo] = useState({
@@ -66,64 +67,70 @@ function EmployeeProfile() {
 
       <aside className={`profile-drawer ${isOpen ? "open" : "closed"}`}>
         <h2>My Profile</h2>
-        <form onSubmit={handleForm}>
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            name="name"
-            value={info.name}
-            onChange={handleChange}
-          />
+        <div className="profile-avatar">
+          <img src={info.avatar || "./fakeavatar.jpg"} alt="Profile avatar" />
+        </div>
 
-          <label htmlFor="department">Department</label>
-          <input
-            id="department"
-            type="text"
-            name="department"
-            value={info.department}
-            onChange={handleChange}
-          />
+        <div className="employee-profile-form">
+          <form onSubmit={handleForm}>
+            <label htmlFor="avatar">Avatar URL</label>
+            <input
+              id="avatar"
+              type="text"
+              name="avatar"
+              value={info.avatar || ""}
+              onChange={handleChange}
+            />
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={info.name}
+              onChange={handleChange}
+            />
 
-          <label htmlFor="bio">Bio</label>
-          <input
-            id="bio"
-            type="text"
-            name="bio"
-            value={info.bio}
-            onChange={handleChange}
-          />
+            <label htmlFor="department">Department</label>
+            <input
+              id="department"
+              type="text"
+              name="department"
+              value={info.department}
+              onChange={handleChange}
+            />
 
-          <label htmlFor="skills">Skills</label>
-          <input
-            id="skills"
-            type="text"
-            name="skills"
-            value={info.skills}
-            onChange={handleChange}
-          />
+            <label htmlFor="bio">Bio</label>
+            <textarea
+              id="bio"
+              type="text"
+              name="bio"
+              value={info.bio}
+              onChange={handleChange}
+            />
 
-          <label htmlFor="avatar">Avatar URL</label>
-          <input
-            id="avatar"
-            type="text"
-            name="avatar"
-            value={info.avatar || ""}
-            onChange={handleChange}
-          />
+            <label htmlFor="skills">Skills</label>
+            <input
+              id="skills"
+              type="text"
+              name="skills"
+              value={info.skills}
+              onChange={handleChange}
+            />
 
-          <button type="submit">Update</button>
-          <Link to="/home/myprofile/mycourses" className="profile-link">
-            My Courses
-          </Link>
+            <button type="submit">Update</button>
+            <Link to="/home/myprofile/mycourses" className="profile-link">
+              My Courses
+            </Link>
 
-          {error && (
-            <p className="error">
-              {error.message || error.error || String(error)}
-            </p>
-          )}
-          {responseState && <p className="success">{responseState}</p>}
-        </form>
+            {error && (
+              <p className="error">
+                {error.message || error.error || String(error)}
+              </p>
+            )}
+            {responseState && <p className="success">{responseState}</p>}
+          </form>
+        </div>
+        <Link to={"/layout"}>Log out </Link>
       </aside>
     </div>
   );
