@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { Navigate, useNavigate } from "react-router";
 function VideoForm({ courseId }) {
+  const navigate = useNavigate();
   const [videoData, setVideoData] = useState({
     title: "",
     description: "",
@@ -41,6 +42,7 @@ function VideoForm({ courseId }) {
       );
 
       setMessage("Video has been added successfully!");
+      navigate(`/home/myprofile/mycourses/${courseId}/`);
       setVideoData({ title: "", description: "", video_url: null });
     } catch (err) {
       setMessage(

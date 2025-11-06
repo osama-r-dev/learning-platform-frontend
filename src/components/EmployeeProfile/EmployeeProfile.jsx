@@ -14,7 +14,7 @@ function EmployeeProfile() {
   });
   const [error, setError] = useState(null);
   const [responseState, setResponseState] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleChange(event) {
     setInfo({ ...info, [event.target.name]: event.target.value });

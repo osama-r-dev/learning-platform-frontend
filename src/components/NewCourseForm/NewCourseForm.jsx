@@ -65,6 +65,7 @@ function NewCourseForm({ flag }) {
       if (info.course_img) formData.append("course_img", info.course_img);
 
       let response;
+
       if (courseId) {
         response = await axios.put(
           `http://127.0.0.1:8000/api/courses/${courseId}/`,
@@ -77,6 +78,7 @@ function NewCourseForm({ flag }) {
           }
         );
         setResponseState("Course updated successfully!");
+        window.location.reload();
       } else {
         response = await axios.post(
           `http://127.0.0.1:8000/api/courses/`,

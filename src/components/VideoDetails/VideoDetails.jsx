@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./VideoDetails.css";
+import CourseDetail from "../CourseDetail/CourseDetail";
+import { Link } from "react-router";
 function VideoDetails({ courseId, videoId, flag }) {
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [state, setState] = useState("");
 
   useEffect(() => {
     async function getVideo() {
@@ -24,11 +27,6 @@ function VideoDetails({ courseId, videoId, flag }) {
   }, [courseId, videoId]);
 
   async function handleDeleteCourse() {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this course?"
-    );
-    if (!confirmDelete) return;
-
     try {
       const token = localStorage.getItem("accessToken");
       await axios.delete(
@@ -37,10 +35,11 @@ function VideoDetails({ courseId, videoId, flag }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      alert("Video deleted successfully!");
+      setState("Video deleted");
+      window.location.reload();
+      // <Link key={courseId} to={"/home/myprofile/mycourses/:courseId"}></Link>;
     } catch (error) {
       console.error("Failed to delete video:", error);
-      alert("Failed to delete video");
     }
   }
   if (loading) return <p>Loading video...</p>;
@@ -54,6 +53,7 @@ function VideoDetails({ courseId, videoId, flag }) {
       </video>
       <button onClick={handleDeleteCourse}>Delete Video</button>
       <p className="video-descrip">{video.description}</p>
+      <p>{state}</p>
     </div>
   );
 }

@@ -13,6 +13,11 @@
   background: linear-gradient(135deg, #3fde82, #1eae5a) !important;
 }
 
+.video-list {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .course_card img {
   width: 100%;
   height: 320px;

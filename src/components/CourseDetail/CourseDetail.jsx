@@ -31,21 +31,15 @@ function CourseDetail({ myCoursesMode }) {
   }, []);
 
   async function handleDeleteCourse() {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this course?"
-    );
-    if (!confirmDelete) return;
-
     try {
       const token = localStorage.getItem("accessToken");
       await axios.delete(`http://127.0.0.1:8000/api/courses/${courseId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      alert("Course deleted successfully!");
+
       navigate("/home/myprofile/mycourses");
     } catch (error) {
       console.error("Failed to delete course:", error);
-      alert("Failed to delete course");
     }
   }
   const colors = ["#FF006E"];
