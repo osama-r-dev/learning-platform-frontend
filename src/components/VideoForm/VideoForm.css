@@ -1,4 +1,48 @@
-.video-list {
-  display: flex !important;
-  flex-direction: column !important;
+.popup-form-video {
+  gap: 0.8rem;
+  position: fixed;
+  gap: 2.6rem;
+  top: 60px;
+  left: 80px;
+  background-color: #ffff;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  height: 16rem;
+}
+.x {
+  align-self: self-end;
+  position: absolute;
+  top: 6px;
+  right: 16px;
+  color: red;
+  font-weight: 600;
+}
+.submit-btn {
+  background-color: #15616d;
+  border-radius: 2rem;
+  width: 20rem;
+  color: #fff;
+  font-weight: 600;
+}
+.form-flex {
+  display: flex;
+}
+.vid-form-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 8.5rem;
+}
+
+.vid-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
+}
+
+.outline {
+  border-radius: 1rem;
+  border: #15616d 0.1rem solid;
+  opacity: 80%;
+  padding: 0.2rem;
 }

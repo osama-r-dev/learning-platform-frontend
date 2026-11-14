@@ -1,61 +1,27 @@
 import axios from "axios";
-import { Link } from "react-router";
-import React, { useEffect, useState } from "react";
-import "./CourseList.css";
-function CourseList({ myCoursesMode }) {
+import React, { useState, useEffect } from "react";
+import CourseCard from "../CourseCard/CourseCard";
+
+function CourseList() {
   const [courses, setCourses] = useState([]);
-
+  const accessToken = localStorage.getItem("accessToken");
   async function getCoursesList() {
-    const accessToken = localStorage.getItem("accessToken");
-    const url = myCoursesMode
-      ? "http://127.0.0.1:8000/api/courses/"
-      : "http://127.0.0.1:8000/api/allcourses/";
-
-    const response = await axios.get(url, {
-      headers: myCoursesMode ? { Authorization: `Bearer ${accessToken}` } : {},
+    const res = await axios.get("http://127.0.0.1:8000/api/allcourses/", {
+      headers: { Authorization: `Bearer ${accessToken}` },
     });
-
-    setCourses(response.data);
+    console.log(res);
+    setCourses(res.data);
   }
+
   useEffect(() => {
     getCoursesList();
-  }, [myCoursesMode]);
+  }, []);
+
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <div className="courses_dashboard">
-        {courses.map((course) => {
-          return (
-            <Link
-              key={course.id}
-              to={
-                myCoursesMode
-                  ? `/home/myprofile/mycourses/${course.id}`
-                  : `/home/courses/${course.id}`
-              }
-            >
-              <div className="course_container">
-                {/* TODO remove this and make an API request for an actual course img */}
-                <img src={"http://127.0.0.1:8000".concat(course.course_img)} />
-                <div>
-                  <h2>{course.title}</h2>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-        {/* // this is a condition in the case of adding a course meaning if it contains the 'myprofile inside the path' */}
-        {myCoursesMode && (
-          <div className="add-course-btn">
-            <Link
-              to="/home/myprofile/mycourses/new"
-              className="add-course-link"
-            >
-              New Course
-            </Link>
-          </div>
-        )}
-        {/* End of that condition */}
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-6 mx-auto my-12">
+      {courses.map((course) => {
+        return <CourseCard course={course} />;
+      })}
     </div>
   );
 }

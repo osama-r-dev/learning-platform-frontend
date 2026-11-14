@@ -18,8 +18,8 @@
 .login-label {
   align-self: center;
   font-weight: 400;
-  font-size: 2.8rem;
-  color: #23ce6b;
+  font-size: 2rem;
+  color: #15616d;
   font-weight: 600;
 }
 body {
@@ -42,10 +42,12 @@ body {
   border-radius: 0.3rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: #23ce6b;
+  background-color: #15616d;
   border-radius: 1rem;
   margin-top: 0.6rem;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 .login-submit-button:hover {
@@ -54,6 +56,7 @@ body {
 }
 
 .login-input {
+  border: 1px solid #15616d;
   border-radius: 0.2rem;
   display: block;
   text-align: center;

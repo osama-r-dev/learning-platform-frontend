@@ -1,0 +1,52 @@
+.popup-form {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: fixed;
+  gap: 2.6rem;
+  top: 60px;
+  left: 80px;
+  background-color: #ffff;
+  padding: 1rem;
+  border-radius: 0.6rem;
+}
+.hidden {
+  display: none;
+}
+
+.course-form-col-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-form-col-1 button {
+  align-self: flex-start;
+}
+.course-form-col-2 input {
+  display: block;
+  border-radius: 12px;
+
+  border: 1px black solid;
+}
+
+.course-form-col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-x-container {
+  display: flex;
+  justify-content: end;
+}
+.form-x {
+  justify-self: end;
+}
+
+.course-form-btn {
+  padding: 1rem;
+  background-color: #15616d;
+  border-radius: 4rem;
+}

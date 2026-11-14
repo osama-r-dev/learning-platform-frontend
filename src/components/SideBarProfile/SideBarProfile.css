@@ -1,0 +1,29 @@
+.unclicked-prof-btn {
+  top: 52px;
+  position: absolute;
+  left: 40px;
+  transition: left 0.3s ease, opacity 0.3s ease;
+}
+.clicked-prof-btn {
+  top: 52px;
+  left: 208px;
+  position: absolute;
+  transition: left 0.3s ease, opacity 0.3s ease;
+}
+.visible-prof {
+  display: inherit;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden-prof {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(-100%);
+}
+.menu-prof {
+  left: 0;
+  width: 200px;
+  height: 50vh;
+  background-color: rgb(233, 222, 222);
+  position: absolute;
+  top: 65px;
+}
